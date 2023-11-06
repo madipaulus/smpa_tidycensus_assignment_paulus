@@ -1,6 +1,6 @@
 ---
 title: "Tidyverse Census Assignment"
-author: "Your Name Here"
+author: "Madison Paulus"
 format: html
 ---
 
@@ -35,7 +35,7 @@ You'll need your Census API Key:
 
 ```{r echo=FALSE}
 
-myapikey <- "YOUR API KEY"
+myapikey <- "f2002109760dfbbb9a1af10a5ed559ece820f0e8"
 
 census_api_key(myapikey, overwrite=TRUE)
 ```
@@ -47,7 +47,7 @@ You'll also need to load the list of American Community Survey variables from th
 **Task** load the variables from the 2021 5-year ACS and save them to a dataframe
 
 ```{r}
-
+censusvariables <- load_variables(2021, "acs5", cache = TRUE)
 
 ```
 
