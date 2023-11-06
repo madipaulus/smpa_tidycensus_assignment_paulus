@@ -54,10 +54,14 @@ censusvariables <- load_variables(2021, "acs5", cache = TRUE)
 ## Answer questions
 
 **Q1** What is the Maryland jurisdiction with the lowest median age, according to the ACS 2021 5-year estimates? You will need to find the variable for median age first. 
-
+I found the variable "B01002A_001" by searching "med" in the dataset. I used the code provided from the in-class excercise to make a new dataset for medage in maryland by county. I then sorted that dataset and found that Baltimore MD has the lowest medage at 36.4.
 ```{r}
 
+medage <- "B01002A_001"
 
+lowest_medage <- get_acs(geography = "county", 
+        variables = medage,
+        state = "MD")
 
 
 
@@ -66,10 +70,14 @@ censusvariables <- load_variables(2021, "acs5", cache = TRUE)
 
 
 **Q2** Which Maryland counties have a median age of at least 50? You can use the dataframe you just made to answer this, but you must write code to display only those counties with a median age of at least 50. 
+Here, I pasted the same code as above and filtered estimate (aka age column) to be greater than or eqaul to 50. I got that there are four MD counties with a medage of at least 50.
 
 ```{r}
 
-
+lowest_medage <- get_acs(geography = "county", 
+        variables = medage,
+        state = "MD") %>%
+filter(estimate >= 50)
 
 
 ```
@@ -81,9 +89,16 @@ For each dataframe, rename the `estimate` column to a meaningful name you've giv
 
 Which county has the highest percentage of 5-17 year-olds who speak Spanish at home and also speak English very well?
 
+First, I found the variable for people who speak spanish very well by searching speak spanish in the whole dataset. 
+
 ```{r}
 
+five_seventeen_yo <- get_acs(geography = "county", 
+        variables = medage,
+        state = "MD") %>%
+filter(estimate == 5-17)
 
+spanishvw <- "B06007PR_004"
 
 
 
