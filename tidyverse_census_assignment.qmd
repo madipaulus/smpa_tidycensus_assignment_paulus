@@ -35,9 +35,9 @@ You'll need your Census API Key:
 
 ```{r echo=FALSE}
 
-myapikey <- "f2002109760dfbbb9a1af10a5ed559ece820f0e8"
+myapikey <- "2a6f8c21a30d3024e038d67d7d4eba647dc79cd4"
 
-census_api_key(myapikey, overwrite=TRUE)
+census_api_key(myapikey, overwrite = TRUE)
 ```
 
 ## Load and view ACS variables
@@ -89,16 +89,17 @@ For each dataframe, rename the `estimate` column to a meaningful name you've giv
 
 Which county has the highest percentage of 5-17 year-olds who speak Spanish at home and also speak English very well?
 
-First, I found the variable for people who speak spanish very well by searching speak spanish in the whole dataset. 
+First, I found the variable for people who speak spanish and speak english very well by searching "speak english" in the dataset. 
 
 ```{r}
 
-five_seventeen_yo <- get_acs(geography = "county", 
-        variables = medage,
+fiveseventeenyo <- get_acs(geography = "county", 
+       variables = spanishenglishvw,
         state = "MD") %>%
-filter(estimate == 5-17)
+filter(estimate == 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17)
 
 spanishvw <- "B06007PR_004"
+spanishenglishvw <- "B06007PR_004"
 
 
 
